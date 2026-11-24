@@ -1163,11 +1163,15 @@ const ROUTINES = [{"id": "neck", "title": "颈椎·肩颈 3 分钟", "icon": "�
     $('pModeBtn').style.display = 'inline-block';
     g.style.display = st.stepsMode ? 'none' : 'block';
     s.style.display = st.stepsMode ? 'grid' : 'none';
-    if (!st.stepsMode) {
-      if (g.getAttribute('src') !== d.gif) g.setAttribute('src', d.gif);
-    } else {
+    if (g.getAttribute('src') !== d.gif) {
+      // 新动画加载完成前先隐藏，避免网络慢时仍显示上一个动作的动画
+      g.style.opacity = '0';
+      g.onload = g.onerror = () => { g.style.opacity = '1'; };
+      g.setAttribute('src', d.gif);
+    }
+    if (st.stepsMode) {
       const imgs = s.querySelectorAll('img');
-      d.frames.forEach((f, k) => { imgs[k].src = f; });
+      (d.frames || []).forEach((f, k) => { if (imgs[k]) imgs[k].src = f; });
       markStep(0);
     }
     $('pModeBtn').textContent = st.stepsMode ? '看循环动画' : '只看分步图';
@@ -1242,6 +1246,8 @@ const ROUTINES = [{"id": "neck", "title": "颈椎·肩颈 3 分钟", "icon": "�
   function start(id) {
     st.rt = ROUTINES.find(r => r.id === id); st.i = 0; st.side = 1;
     st.left = st.rt.drills[0].dur; st.paused = false; st.stepsMode = false;
+    // 预加载整套序列的动画，切换动作时立即可用（分步图只在切到分步模式时才加载）
+    st.rt.drills.forEach(d => { if (d.gif) new Image().src = d.gif; });
     $('pPlay').textContent = '暂停'; $('pPlay').classList.add('on');
     P.classList.add('on'); document.body.style.overflow = 'hidden';
     render(); announce(cur());
@@ -1308,7 +1314,10 @@ const ROUTINES = [{"id": "neck", "title": "颈椎·肩颈 3 分钟", "icon": "�
     const t = e.target;
     if (t && t.tagName === 'IMG') {
       const w = t.closest('.gifwrap') || t.closest('.pmedia');
-      if (w) w.classList.remove('nogif');
+      // 只有容器里没有任何加载失败的图时才撤掉占位（避免别的图 load 事件抹掉失败状态）
+      const failed = w && [...w.querySelectorAll('img')].some(im =>
+        im.getAttribute('src') && im.complete && im.naturalWidth === 0 && im.style.display !== 'none' && !im.closest('#pSteps'));
+      if (w && !failed) w.classList.remove('nogif');
     }
   }, true);
   document.querySelectorAll('img').forEach(im => {           // 挂监听前已失败的图（有 src 才算失败；无 src 是尚未使用的播放器图）
