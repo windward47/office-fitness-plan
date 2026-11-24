@@ -10,8 +10,17 @@ body{margin:0;font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHe
 header{background:linear-gradient(135deg,#0b6b5f,#124a5a);color:#fff;padding:34px 20px 26px}
 header h1{margin:0 0 8px;font-size:26px}
 header p{margin:4px 0;opacity:.9;font-size:14px}
-nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--b);z-index:9;padding:8px 12px;overflow:auto;white-space:nowrap}
-nav a{display:inline-block;color:var(--acc);text-decoration:none;font-size:13px;margin-right:14px;font-weight:600}
+nav{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--b);z-index:9;padding:6px 10px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{display:inline-block;color:var(--acc);text-decoration:none;font-size:13px;margin-right:6px;font-weight:600;padding:7px 12px;border-radius:16px;min-height:34px}
+nav a:hover{background:#e8f4f1}
+nav a.hot{background:var(--acc);color:#fff}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+.hcta{margin:14px 0 6px!important;opacity:1!important}
+.cta{display:inline-block;background:#fff;color:#0b6b5f;font-weight:800;font-size:15px;padding:10px 18px;border-radius:24px;text-decoration:none;margin:0 8px 8px 0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7);box-shadow:none}
+section{box-shadow:0 1px 3px rgba(16,24,40,.05)}
+#follow{border:2px solid #9fd8cc;background:linear-gradient(180deg,#f2fbf8,#fff 160px)}
 main{max-width:1180px;margin:0 auto;padding:20px}
 section{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:18px 20px;margin:16px 0}
 h2{margin:0 0 12px;font-size:20px;color:var(--acc);border-left:4px solid var(--acc);padding-left:10px}
@@ -58,9 +67,11 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 .sore{background:#fff6ea;border:1px solid #f0d3a6;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:14px}
 #player{position:fixed;inset:0;background:#0d1418;color:#eef6f4;z-index:99;display:none;flex-direction:column;align-items:center;padding:10px 14px 16px;overflow:auto}
 #player.on{display:flex}
-.pbar{width:100%;max-width:900px;display:flex;align-items:center;gap:8px}
+.pbar{width:100%;max-width:900px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pbar .ptitle{min-width:140px}
 .pbar .ptitle{font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pbtn{background:#1d2a30;color:#dff3ee;border:1px solid #33505a;border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+.pbtn{background:#1d2a30;color:#dff3ee;border:1px solid #33505a;border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer;min-height:38px}
+#pPlay{min-width:72px;font-weight:700}
 .pbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
 .pmain{width:100%;max-width:900px;display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:18px;margin-top:12px}
 .pmedia{position:relative;background:#fff;border-radius:14px;overflow:hidden;aspect-ratio:1/1}
@@ -90,12 +101,61 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 <header>
   <h1>长期久坐办公 · 健身与体态管理计划</h1>
   <p>基于 <a href="https://github.com/hasaneyldrm/exercises-dataset" style="color:#bfeae1">exercises-dataset</a>（1,324 个动作库）中筛选的 <b>48</b> 个动作；含每周总览、办公室微休息、健身房训练日与 12 周进阶。</p>
-  <p class="muted" style="color:#cfe8e3">动画演示来自数据库 GIF，鼠标移到卡片上即可观看循环。动作图片与动画 © Gym visual — <a href="https://gymvisual.com/" style="color:#cfe8e3">gymvisual.com</a>（180×180 分辨率，保留本署名仅供个人使用）。</p>
+  <p class="hcta"><a class="cta" href="#follow">▶ 开始跟练（3-8 分钟）</a><a class="cta ghost" href="#daily">今天练什么？</a></p>
+  <p class="muted" style="color:#cfe8e3">每个动作都配循环 GIF 动画。动作图片与动画 © Gym visual — <a href="https://gymvisual.com/" style="color:#cfe8e3">gymvisual.com</a>（180×180 分辨率，保留本署名仅供个人使用）。</p>
 </header>
 <nav>
- <a href="#follow">★ 跟练模式</a><a href="#daily">今天练什么</a><a href="#principles">0 科学依据</a><a href="#weekly">1 每周总览</a><a href="#hourly">2 A 每小时</a><a href="#mini">3 B 每天10分钟</a><a href="#travel">4 C 室内90分钟</a><a href="#gym">5 D 健身房</a><a href="#cooldown">6 F 拉伸整理</a><a href="#phases">7 12周进阶</a><a href="#safety">8 安全边界</a><a href="#log">9 日志</a><a href="#library">10 动作库</a>
+ <a href="#follow" class="hot">★ 跟练</a><a href="#daily">今天练什么</a><a href="#principles">0 科学依据</a><a href="#weekly">1 每周总览</a><a href="#hourly">2 A 每小时</a><a href="#mini">3 B 每天10分钟</a><a href="#travel">4 C 室内90分钟</a><a href="#gym">5 D 健身房</a><a href="#cooldown">6 F 拉伸整理</a><a href="#phases">7 12周进阶</a><a href="#safety">8 安全边界</a><a href="#log">9 日志</a><a href="#library">10 动作库</a>
 </nav>
 <main>
+
+<section id="follow"><h2>★ 跟练模式（GIF 动画 · 倒计时自动切换）</h2>
+<div class="sore">
+<b>先看这段：你现在的腰和肩颈是“酸”，不是“伤”。</b>下面这套已按此调整过：
+<ul>
+<li><b>腰</b>：仰卧背伸（C10）在酸痛期不作为首选，改用<b>仰卧屈膝转体 C11</b>、<b>屈膝髋抬 C12</b>、<b>死虫 C01</b>、<b>臀桥 C02</b>（M06 已按官方动画更正为坐姿单臂上举侧伸展，对腰友好，酸痛期可做）；硬拉 S10 前 4 周不安排大重量，先学髋铰链。</li>
+<li><b>肩颈</b>：拉伸一律“痛感≤4/10、不猛拉”；先拉伸再练中背/下斜方（S07/S08），别只拉不练。</li>
+<li><b>节奏</b>：酸痛明显的当天只做「颈椎 3 分钟」+「睡前 6 分钟」；酸痛减轻后再加全身 8 分钟。任何时候<b>疼痛≥5/10、出现手麻腿麻或夜间痛醒 → 停下并就医</b>。</li>
+</ul>
+</div>
+<p>点「开始跟练」→ 页面上方弹出播放器：<b>先给你“准备”提示 → GIF 循环/关键帧分步 → 倒计时结束自动切到下一个</b>。手机点「全屏」按钮，可边看边做。</p>
+<div class="rtgrid">
+<div class="rtcard">
+  <div class="rthead"><span class="ricon">💻</span><b>颈椎·肩颈 3 分钟</b><span class="muted">·共3分20秒</span><img class="rtgif" loading="lazy" src="media/1403-x2chWLO.gif" alt="neck side stretch" data-rt="neck" title="点击开始跟练：颈侧拉伸…"></div>
+  <div class="muted">每 60-90 分钟一次。目标是打断头前伸与耸肩的持续负荷，不是把自己拉痛。<br>📍 工位坐着就能做，不用换衣服</div>
+  <ol class="rtlist"><li>坐直，脚踩地，肩放松 — 10秒<span class="muted"> · 坐骨坐稳、下巴微收，先深呼吸两次</span></li><li><b>颈侧拉伸（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 耳朵找肩膀；出现手麻/头晕立刻停</span></li><li><b>颈侧轻加压（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 手只做轻微加压，痛感≤4/10</span></li><li><b>胸小肌/前肩拉伸</b> — 30秒<span class="muted"> · 双手背后交叉向前推，胸前打开</span></li><li><b>胸椎屈伸（含胸↔挺胸）</b> — 30秒（约 10 次）<span class="muted"> · 一格一格地做，别追速度</span></li><li><b>坐姿臀部(梨状肌)拉伸</b> — 40秒（左右各一次）<span class="muted"> · 坐直别塌腰，翘起的那条腿脚尖勾起</span></li><li><b>坐姿胸椎旋转</b> — 30秒（每侧约 6 次）<span class="muted"> · 眼睛跟着手走，转胸不转颈</span></li></ol>
+  <button class="startbtn" data-rt="neck">▶ 开始跟练</button>
+</div>
+<div class="rtcard">
+  <div class="rthead"><span class="ricon">🪑</span><b>腰背舒缓 5 分钟</b><span class="muted">·共3分50秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="back" title="点击开始跟练：仰卧屈膝转体…"></div>
+  <div class="muted">针对“酸、紧、但不剧烈”的腰部不适：先减张（拉伸），再做抗伸展与臀肌激活。<br>📍 地板/瑜伽垫，穿宽松衣服</div>
+  <ol class="rtlist"><li>仰卧，双膝屈曲，脚踩地 — 10秒<span class="muted"> · 腰下轻贴地，做两次慢呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 45秒（左右各一次）<span class="muted"> · 膝只转到不痛的那一半，慢慢落</span></li><li><b>仰卧腿后侧拉伸</b> — 35秒（左右各一次）<span class="muted"> · 臀不离地，拉到“紧而不痛”</span></li><li><b>臀桥</b> — 40秒（约 12 次）<span class="muted"> · 先在臀部收紧，再抬骨盆；腰不顶</span></li><li><b>死虫</b> — 40秒（约 6 次）<span class="muted"> · 腰贴地，腿伸到腰要离地就回</span></li><li><b>坐姿臀部拉伸</b> — 60秒（左右各一次）<span class="muted"> · 坐直，胸骨向前，不要弓背</span></li></ol>
+  <button class="startbtn" data-rt="back">▶ 开始跟练</button>
+</div>
+<div class="rtcard">
+  <div class="rthead"><span class="ricon">🧘</span><b>全身唤醒 8 分钟</b><span class="muted">·共5分10秒</span><img class="rtgif" loading="lazy" src="media/1604-DFGXwZr.gif" alt="world greatest stretch" data-rt="full" title="点击开始跟练：世界最伟大拉伸…"></div>
+  <div class="muted">久坐一整天后最缺的是“拉紧的松开 + 松掉的收紧”。按顺序做完，腰和肩颈一起处理。<br>📍 办公室/家里都行，需要 1㎡ 空间</div>
+  <ol class="rtlist"><li>站立，双手上举伸展一次 — 10秒<span class="muted"> · 站直，深呼吸，感受起身</span></li><li><b>世界最伟大拉伸（左右各做）</b> — 40秒（左右各一次）<span class="muted"> · 后腿塌就写不下去时，手撑椅子</span></li><li><b>扶物屈髋下压背阔</b> — 40秒<span class="muted"> · 髋向后，胸向下，别弓腰硬压</span></li><li><b>臀桥行进</b> — 40秒（约 6 次）<span class="muted"> · 骨盆保持水平，慢慢交替抬脚</span></li><li><b>弹力带划船（左右/双侧）</b> — 40秒（每侧约 12 次）<span class="muted"> · 无带：改用墙角划船或 S03</span></li><li><b>肩胛俯卧撑</b> — 40秒（约 12 次）<span class="muted"> · 只动肩胛，手肘不弯</span></li><li><b>膝跪股四头肌拉伸</b> — 40秒（左右各一次）<span class="muted"> · 尾骨微收，腰不塌</span></li><li><b>胸小肌/前肩拉伸</b> — 30秒（左右各一次）<span class="muted"> · 胸前打开，肩不下压</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 轻轻的，不猛拉</span></li></ol>
+  <button class="startbtn" data-rt="full">▶ 开始跟练</button>
+</div>
+<div class="rtcard">
+  <div class="rthead"><span class="ricon">🌙</span><b>睡前放松 6 分钟</b><span class="muted">·共3分50秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="night" title="点击开始跟练：仰卧屈膝转体…"></div>
+  <div class="muted">躺着的姿势对腰椎压力最小，适合在酸痛的一天结束时做，帮助放松入睡。<br>📍 床上/地板上，全程躺着</div>
+  <ol class="rtlist"><li>躺下，膝盖垫个枕头 — 15秒<span class="muted"> · 做 3 次“吸 4 秒 呼 6 秒”的呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 60秒（左右各一次）<span class="muted"> · 呼气时膝盖落，吸气回正</span></li><li><b>仰卧腿后侧拉伸</b> — 40秒（左右各一次）<span class="muted"> · 用毛巾勾脚，腿抬到有拉伸感</span></li><li><b>臀桥（晚上做轻的）</b> — 35秒（约 10 次）<span class="muted"> · 不急，慢慢起慢慢落</span></li><li><b>坐/卧姿臀部拉伸</b> — 50秒（左右各一次）<span class="muted"> · 轻轻抱膝，别用力压</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 侧躺或坐姿都行</span></li></ol>
+  <button class="startbtn" data-rt="night">▶ 开始跟练</button>
+</div></div>
+<p class="muted">第一次用建议先静音看一遍：确认每个动作在自己身上不痛，再开声音跟练。手机横屏体验更好。</p>
+</section>
+
+<section id="daily"><h2>今天练什么（按症状选一条）</h2>
+<p>不需要记一节训练课的完整结构——<b>只按“现在哪里不舒服”选一条</b>，点「开始跟练」就做完。</p>
+<ul>
+<li><b>腰酸，但能正常上班</b>（最常见）：每天至少 2 次「腰背舒缓 5 分钟」+ 每小时 1 次颈椎 3 分钟；久坐超过 45 分钟就起身 2 分钟。</li>
+<li><b>肩颈像被绳子勒着</b>：每 60 分钟「颈椎·肩颈 3 分钟」一次；坐着时把屏幕抬到眼睛高度，键盘靠近身体。</li>
+<li><b>腰和颈一起酸</b>：腰背 5 分钟 + 颈椎 3 分钟连着做（共 8 分钟），下午再做一次「睡前 6 分钟」。</li>
+<li><b>出差/没地方</b>：全身唤醒 8 分钟，站着的动作可换成椅子旁版本。</li>
+<li><b>不适加重 / 有腿麻手麻</b>：暂停以上练习，先看医生或物理治疗师，再回到 F 版块的拉伸整理。</li>
+</ul></section>
 
 <section id="principles"><h2>0 · 科学依据：久坐到底在伤害什么？</h2>
 <p>长时间坐姿主要累积 5 类问题，本计划的每个动作都对应其中之一：</p>
@@ -108,7 +168,7 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 <tr><td>腰背痛 + 核心耐力下降</td><td>长期坐姿者屈曲/伸展耐力差，是 LBP 复发的最强预测因子。<i>(Biering-Sørensen 1984; McGill 1998)</i></td><td>C01-C07 核心抗伸展/抗旋转/侧链 + 每周 2 次力量</td></tr>
 <tr><td>代谢/心血管风险 & 全因死亡</td><td>久坐是独立风险因素；但 <b>每天 30-75 分钟中高强度运动可基本抵消</b>其额外死亡风险。<i>(Ekelund 2016 Lancet; WHO 2020)</i></td><td>每周 150 分钟中强度有氧 + 2 次力量（本页 A-E 版块）</td></tr>
 </tbody></table>
-<p class="muted">核心原则：①<b>每坐着 20-30 分钟起身 2-3 分钟</b>（打断久坐是最便宜的措施）；②每 60 分钟做项链微拉伸；③每周累计 <b>150-300 分钟中强度有氧</b> + <b>2-3 次力量训练</b>；④拉伸只解决"紧"，必须用力量解决"弱"。</p>
+<p class="muted">核心原则：①<b>每坐着 20-30 分钟起身 2-3 分钟</b>（打断久坐是最便宜的措施）；②每 60 分钟做一次颈肩微拉伸；③每周累计 <b>150-300 分钟中强度有氧</b> + <b>2-3 次力量训练</b>；④拉伸只解决"紧"，必须用力量解决"弱"。</p>
 </section>
 <section id="weekly"><h2>1 · 每周总览（无器械 / 健身房都可）</h2>
 <table class="tt">
@@ -124,7 +184,7 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 <p>午休或下午 15:00 后做，用椅子和地面即可完成。</p>
 <table class="plan"><thead><tr><th>#</th><th>动作</th><th>组×次/时间</th><th>目的</th></tr></thead><tbody><tr><td>1</td><td><a href="#C04"><b>平板交替触肩</b></a></td><td>2-3组 × 每侧8-10次</td><td class="muted">抗伸展+肩胛稳定，替代久坐含胸</td></tr><tr><td>2</td><td><a href="#C02"><b>臀桥</b></a></td><td>2-3组 × 12-15次</td><td class="muted">臀肌激活，抵消髋长期屈曲</td></tr><tr><td>3</td><td><a href="#S06"><b>弹力带单臂低位划船</b></a></td><td>3组 × 每侧12-15次</td><td class="muted">拉类，纠正拉/推失衡</td></tr><tr><td>4</td><td><a href="#M03"><b>胸小肌/前肩拉伸</b></a></td><td>每侧2次 × 20-30秒</td><td class="muted">胸小肌拉伸，对抗圆肩</td></tr><tr><td>5</td><td><a href="#M07"><b>坐姿臀部拉伸</b></a></td><td>每侧2次 × 30-45秒</td><td class="muted">臀部/髋外旋放松</td></tr><tr><td>6</td><td><a href="#C07"><b>侧桥</b></a></td><td>2组 × 每侧20-30秒</td><td class="muted">侧腰与髋外侧稳定</td></tr></tbody></table>
 <p class="muted">椅子版灵活 5 分钟（周五）：椅上胸椎旋转（M09）+ 坐姿单臂上举侧伸展（M06）+ 站姿侧链拉伸（M05）+ 墙上小腿拉伸（M14）+ 前臂拉伸（M15）。</p></section>
-<section id="travel"><h2>4 · C · 室内 90 分钟（公园/不固定场所）</h2>
+<section id="travel"><h2>4 · C · 不固定场所 90 分钟（公园 / 酒店 / 家里）</h2>
 <p>一把公园长椅/一个稳固横杆/一根弹力带 + 一条毛巾即可。以下 4 个循环方案轮换使用，每个动作 3 组，组间 45-60 秒，循环间休息 2-3 分钟。</p>
 <div class="daygrid">
 
@@ -231,53 +291,6 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 <li>不要把“拉伸”当作治疗；持续 ≥2 周的疼痛、麻木先看医生或物理治疗师。</li>
 </ul>
 <p class="muted">本页为一般健康人群的健身建议，不构成医疗诊断或处方。孕期、术后、心血管疾病患者请先咨询医生。</p></section>
-<section id="follow"><h2>1.5 · 跟练模式（带 GIF 动画 · 倒计时自动切换）</h2>
-<div class="sore">
-<b>先看这段：你现在的腰和肩颈是“酸”，不是“伤”。</b>下面这套已按此调整过：
-<ul>
-<li><b>腰</b>：仰卧背伸（C10）在酸痛期不作为首选，改用<b>仰卧屈膝转体 C11</b>、<b>屈膝髋抬 C12</b>、<b>死虫 C01</b>、<b>臀桥 C02</b>（M06 已按官方动画更正为坐姿单臂上举侧伸展，对腰友好，酸痛期可做）；硬拉 S10 前 4 周不安排大重量，先学髋铰链。</li>
-<li><b>肩颈</b>：拉伸一律“痛感≤4/10、不猛拉”；先拉伸再练中背/下斜方（S07/S08），别只拉不练。</li>
-<li><b>节奏</b>：酸痛明显的当天只做「颈椎 3 分钟」+「睡前 6 分钟」；酸痛减轻后再加全身 8 分钟。任何时候<b>疼痛≥5/10、出现手麻腿麻或夜间痛醒 → 停下并就医</b>。</li>
-</ul>
-</div>
-<p>点「开始跟练」→ 页面上方弹出播放器：<b>先给你“准备”提示 → GIF 循环/关键帧分步 → 倒计时结束自动切到下一个</b>。手机点「全屏」按钮，可边看边做。</p>
-<div class="rtgrid">
-<div class="rtcard">
-  <div class="rthead"><span class="ricon">💻</span><b>颈椎·肩颈 3 分钟</b><span class="muted">·共3分20秒</span><img class="rtgif" loading="lazy" src="media/1403-x2chWLO.gif" alt="neck side stretch" data-rt="neck" title="点击开始跟练：颈侧拉伸…"></div>
-  <div class="muted">每 60-90 分钟一次。目标是打断头前伸与耸肩的持续负荷，不是把自己拉痛。<br>📍 工位坐着就能做，不用换衣服</div>
-  <ol class="rtlist"><li>坐直，脚踩地，肩放松 — 10秒<span class="muted"> · 坐骨坐稳、下巴微收，先深呼吸两次</span></li><li><b>颈侧拉伸（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 耳朵找肩膀；出现手麻/头晕立刻停</span></li><li><b>颈侧轻加压（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 手只做轻微加压，痛感≤4/10</span></li><li><b>胸小肌/前肩拉伸</b> — 30秒<span class="muted"> · 双手背后交叉向前推，胸前打开</span></li><li><b>胸椎屈伸（含胸↔挺胸）</b> — 30秒（约 10 次）<span class="muted"> · 一格一格地做，别追速度</span></li><li><b>坐姿臀部(梨状肌)拉伸</b> — 40秒（左右各一次）<span class="muted"> · 坐直别塌腰，翘起的那条腿脚尖勾起</span></li><li><b>坐姿胸椎旋转</b> — 30秒（每侧约 6 次）<span class="muted"> · 眼睛跟着手走，转胸不转颈</span></li></ol>
-  <button class="startbtn" data-rt="neck">▶ 开始跟练</button>
-</div>
-<div class="rtcard">
-  <div class="rthead"><span class="ricon">🪑</span><b>腰背舒缓 5 分钟</b><span class="muted">·共3分50秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="back" title="点击开始跟练：仰卧屈膝转体…"></div>
-  <div class="muted">针对“酸、紧、但不剧烈”的腰部不适：先减张（拉伸），再做抗伸展与臀肌激活。<br>📍 地板/瑜伽垫，穿宽松衣服</div>
-  <ol class="rtlist"><li>仰卧，双膝屈曲，脚踩地 — 10秒<span class="muted"> · 腰下轻贴地，做两次慢呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 45秒（左右各一次）<span class="muted"> · 膝只转到不痛的那一半，慢慢落</span></li><li><b>仰卧腿后侧拉伸</b> — 35秒（左右各一次）<span class="muted"> · 臀不离地，拉到“紧而不痛”</span></li><li><b>臀桥</b> — 40秒（约 12 次）<span class="muted"> · 先在臀部收紧，再抬骨盆；腰不顶</span></li><li><b>死虫</b> — 40秒（约 6 次）<span class="muted"> · 腰贴地，腿伸到腰要离地就回</span></li><li><b>坐姿臀部拉伸</b> — 60秒（左右各一次）<span class="muted"> · 坐直，胸骨向前，不要弓背</span></li></ol>
-  <button class="startbtn" data-rt="back">▶ 开始跟练</button>
-</div>
-<div class="rtcard">
-  <div class="rthead"><span class="ricon">🧘</span><b>全身唤醒 8 分钟</b><span class="muted">·共5分10秒</span><img class="rtgif" loading="lazy" src="media/1604-DFGXwZr.gif" alt="world greatest stretch" data-rt="full" title="点击开始跟练：世界最伟大拉伸…"></div>
-  <div class="muted">久坐一整天后最缺的是“拉紧的松开 + 松掉的收紧”。按顺序做完，腰和肩颈一起处理。<br>📍 办公室/家里都行，需要 1㎡ 空间</div>
-  <ol class="rtlist"><li>站立，双手上举伸展一次 — 10秒<span class="muted"> · 站直，深呼吸，感受起身</span></li><li><b>世界最伟大拉伸（左右各做）</b> — 40秒（左右各一次）<span class="muted"> · 后腿塌就写不下去时，手撑椅子</span></li><li><b>扶物屈髋下压背阔</b> — 40秒<span class="muted"> · 髋向后，胸向下，别弓腰硬压</span></li><li><b>臀桥行进</b> — 40秒（约 6 次）<span class="muted"> · 骨盆保持水平，慢慢交替抬脚</span></li><li><b>弹力带划船（左右/双侧）</b> — 40秒（每侧约 12 次）<span class="muted"> · 无带：改用墙角划船或 S03</span></li><li><b>肩胛俯卧撑</b> — 40秒（约 12 次）<span class="muted"> · 只动肩胛，手肘不弯</span></li><li><b>膝跪股四头肌拉伸</b> — 40秒（左右各一次）<span class="muted"> · 尾骨微收，腰不塌</span></li><li><b>胸小肌/前肩拉伸</b> — 30秒（左右各一次）<span class="muted"> · 胸前打开，肩不下压</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 轻轻的，不猛拉</span></li></ol>
-  <button class="startbtn" data-rt="full">▶ 开始跟练</button>
-</div>
-<div class="rtcard">
-  <div class="rthead"><span class="ricon">🌙</span><b>睡前放松 6 分钟</b><span class="muted">·共3分50秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="night" title="点击开始跟练：仰卧屈膝转体…"></div>
-  <div class="muted">躺着的姿势对腰椎压力最小，适合在酸痛的一天结束时做，帮助放松入睡。<br>📍 床上/地板上，全程躺着</div>
-  <ol class="rtlist"><li>躺下，膝盖垫个枕头 — 15秒<span class="muted"> · 做 3 次“吸 4 秒 呼 6 秒”的呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 60秒（左右各一次）<span class="muted"> · 呼气时膝盖落，吸气回正</span></li><li><b>仰卧腿后侧拉伸</b> — 40秒（左右各一次）<span class="muted"> · 用毛巾勾脚，腿抬到有拉伸感</span></li><li><b>臀桥（晚上做轻的）</b> — 35秒（约 10 次）<span class="muted"> · 不急，慢慢起慢慢落</span></li><li><b>坐/卧姿臀部拉伸</b> — 50秒（左右各一次）<span class="muted"> · 轻轻抱膝，别用力压</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 侧躺或坐姿都行</span></li></ol>
-  <button class="startbtn" data-rt="night">▶ 开始跟练</button>
-</div></div>
-<p class="muted">第一次用建议先静音看一遍：确认每个动作在自己身上不痛，再开声音跟练。手机横屏体验更好。</p>
-</section>
-
-<section id="daily"><h2>1.6 · 今天练什么（按症状分钟版）</h2>
-<p>不需要记一节训练课的完整结构——<b>只按“现在哪里不舒服”选一条</b>，点「开始跟练」就做完。</p>
-<ul>
-<li><b>腰酸，但能正常上班</b>（最常见）：每天至少 2 次「腰背舒缓 5 分钟」+ 每小时 1 次颈椎 3 分钟；久坐超过 45 分钟就起身 2 分钟。</li>
-<li><b>肩颈像被绳子勒着</b>：每 60 分钟「颈椎·肩颈 3 分钟」一次；坐着时把屏幕抬到眼睛高度，键盘靠近身体。</li>
-<li><b>腰和颈一起酸</b>：腰背 5 分钟 + 颈椎 3 分钟连着做（共 8 分钟），下午再做一次「睡前 6 分钟」。</li>
-<li><b>出差/没地方</b>：全身唤醒 8 分钟，站着的动作可换成椅子旁版本。</li>
-<li><b>不适加重 / 有腿麻手麻</b>：暂停以上练习，先看医生或物理治疗师，再回到 F 版块的拉伸整理。</li>
-</ul></section>
 
 <section id="log"><h2>9 · 训练日志（复制到手机备忘录）</h2>
 <pre class="log">日期 ____ 体重 ____  睡眠 ____h  久坐最长连续 ____min
@@ -1102,11 +1115,13 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 </div>
 <footer>个人使用建议，不替代医疗诊断。如出现持续麻木、放射性疼痛或眩晕请及时就医。<br>数据来源 exercises-dataset（MIT+媒体条款）· 本文档自动生成</footer>
 <style>
-.fbtn{margin:2px 6px 2px 0;padding:5px 12px;border-radius:16px;border:1px solid var(--b);background:#fff;cursor:pointer;font-size:13px}
+.fbtn{margin:3px 6px 3px 0;padding:8px 14px;border-radius:18px;border:1px solid var(--b);background:#fff;cursor:pointer;font-size:14px;min-height:36px}
+.fbtn:hover{border-color:var(--acc)}
+#filters{position:sticky;top:46px;background:#fff;z-index:5;padding:6px 0}
 .fbtn.on{background:var(--acc);color:#fff;border-color:var(--acc)}
 </style>
 <script>
-const catMap = {"M01": ["neck"], "M02": ["neck"], "M03": ["chest"], "M04": ["back"], "M05": ["lat"], "M06": ["stretch"], "M07": ["glute"], "M08": ["glute"], "M09": ["spinal"], "M10": ["spine"], "M11": ["full"], "M12": ["quad"], "M13": ["ham"], "M14": ["calf"], "M15": ["wrist"], "M16": ["arm"], "M17": ["hipflexor"], "C01": ["deadbug", "core"], "C02": ["glute", "core"], "C03": ["glute", "core"], "C04": ["plank", "core"], "C05": ["plank", "core"], "C06": ["plank", "core"], "C07": ["side", "core"], "C08": ["scapula", "chest"], "C09": ["sphinx", "spine"], "C10": ["back", "ext"], "S01": ["inverted", "row", "pull"], "S02": ["inverted", "row", "pull"], "S03": ["row", "pull"], "S04": ["pull", "pull"], "S05": ["pull", "pull"], "S06": ["band", "pull"], "S07": ["band", "pull"], "S08": ["band", "pull"], "S09": ["squat", "legs"], "S10": ["hinge", "legs"], "S11": ["lunge", "legs"], "S12": ["split", "legs"], "S13": ["jump", "cardio"], "S14": ["calf", "legs"], "S15": ["cardio", "cardio"], "S16": ["cardio", "cardio"], "S17": ["push", "wall"], "S18": ["push", "push"], "M18": ["quad"], "C11": ["twist"], "C12": ["hipraise"]};
+const catMap = {"M01": ["neck", "stretch"], "M02": ["neck", "stretch"], "M03": ["chest", "stretch"], "M04": ["back", "stretch"], "M05": ["lat", "stretch"], "M06": ["stretch"], "M07": ["glute", "stretch"], "M08": ["glute", "stretch"], "M09": ["spinal", "stretch"], "M10": ["spine", "stretch"], "M11": ["full", "stretch"], "M12": ["quad", "stretch"], "M13": ["ham", "stretch"], "M14": ["calf", "stretch"], "M15": ["wrist", "stretch"], "M16": ["arm", "stretch"], "M17": ["hipflexor", "stretch"], "C01": ["deadbug", "core"], "C02": ["glute", "core"], "C03": ["glute", "core"], "C04": ["plank", "core"], "C05": ["plank", "core"], "C06": ["plank", "core"], "C07": ["side", "core"], "C08": ["scapula", "chest", "core"], "C09": ["sphinx", "spine", "core"], "C10": ["back", "ext", "core"], "S01": ["inverted", "row", "pull"], "S02": ["inverted", "row", "pull"], "S03": ["row", "pull"], "S04": ["pull"], "S05": ["pull"], "S06": ["band", "pull"], "S07": ["band", "pull"], "S08": ["band", "pull"], "S09": ["squat", "legs"], "S10": ["hinge", "legs"], "S11": ["lunge", "legs"], "S12": ["split", "legs"], "S13": ["jump", "cardio"], "S14": ["calf", "legs"], "S15": ["cardio"], "S16": ["cardio"], "S17": ["push", "wall"], "S18": ["push"], "M18": ["quad", "stretch"], "C11": ["twist", "stretch"], "C12": ["hipraise", "core"]};
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
@@ -1243,7 +1258,24 @@ const ROUTINES = [{"id": "neck", "title": "颈椎·肩颈 3 分钟", "icon": "�
     $('pPlay').textContent = '再来一次';
     st.paused = true;
   }
+  // 跟练时保持屏幕常亮（手机放地上做动作时不会熄屏），支持的浏览器才生效
+  let wake = null;
+  async function keepAwake(on) {
+    try {
+      if (on && 'wakeLock' in navigator && !wake) { wake = await navigator.wakeLock.request('screen'); wake.addEventListener('release', () => { wake = null; }); }
+      if (!on && wake) { await wake.release(); wake = null; }
+    } catch (e) { wake = null; }
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && P.classList.contains('on')) keepAwake(true);
+  });
+  // 记住语音/提示音开关
+  ['pVoice', 'pBeep'].forEach(k => {
+    try { const v = localStorage.getItem('ofp_' + k); if (v !== null) $(k).checked = v === '1'; } catch (e) {}
+    $(k).addEventListener('change', () => { try { localStorage.setItem('ofp_' + k, $(k).checked ? '1' : '0'); } catch (e) {} });
+  });
   function start(id) {
+    keepAwake(true);
     st.rt = ROUTINES.find(r => r.id === id); st.i = 0; st.side = 1;
     st.left = st.rt.drills[0].dur; st.paused = false; st.stepsMode = false;
     // 预加载整套序列的动画，切换动作时立即可用（分步图只在切到分步模式时才加载）
@@ -1262,6 +1294,7 @@ const ROUTINES = [{"id": "neck", "title": "颈椎·肩颈 3 分钟", "icon": "�
   $('pExit').onclick = () => {
     if (st.timer) clearInterval(st.timer); st.timer = null;
     P.classList.remove('on'); document.body.style.overflow = '';
+    keepAwake(false);
     if (SS) try { SS.cancel(); } catch (e) {}
   };
   $('pPlay').onclick = () => {
