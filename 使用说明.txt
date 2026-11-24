@@ -6,6 +6,11 @@
 （动画演示）、4 条跟练序列（颈椎3分钟 / 腰背舒缓5分钟 / 全身唤醒8分钟 /
 睡前放松6分钟）、语音提示、分步图模式与训练记录。无需安装任何软件。
 
+【在线版（推荐，免下载）】
+手机/电脑浏览器直接访问：
+  https://windward47.github.io/office-fitness-plan/
+仓库：https://github.com/windward47/office-fitness-plan
+
 【怎么用】
 1. 把整个文件夹解压到任意位置（手机/电脑都行）
 2. 双击 index.html，用浏览器打开即可（Edge / Chrome / Safari / Firefox）
