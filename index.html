@@ -53,12 +53,12 @@ summary{cursor:pointer;color:var(--acc);font-size:13px;font-weight:600}
 footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 @media (max-width:620px){.card{grid-template-columns:1fr}.gifwrap img{width:100%;height:auto}.daygrid,.rtgrid{grid-template-columns:1fr}}
 /* ── 跟练播放器 ── */
-.rtgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:10px}
+.rtgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-top:10px;align-items:start}
 .rtcard{border:1px solid var(--b);border-radius:12px;padding:14px;background:#fcfdfd}
 .rthead{font-size:16px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.rthead b{white-space:nowrap}
-.rthead .muted{min-width:0}
-.ricon{font-size:18px;margin-right:4px}
+.rthead b{flex:1 1 auto;min-width:0}
+.rtmeta{font-size:12.5px;color:#5c6b73;margin:0 0 6px}
+.ricon{font-size:18px;margin-right:4px;flex:0 0 auto}
 .rtgif{margin-left:auto;width:76px;height:76px;border-radius:10px;border:1px solid var(--b);background:#fff;cursor:pointer;flex:0 0 auto}
 .rtgif:hover{outline:2px solid var(--acc)}
 .rtlist{font-size:13px;margin:8px 0}
@@ -123,32 +123,37 @@ footer{color:var(--mut);font-size:12px;text-align:center;padding:30px 16px}
 <p>点「开始跟练」→ 页面上方弹出播放器：<b>先给你“准备”提示 → GIF 循环/关键帧分步 → 倒计时结束自动切到下一个</b>。手机点「全屏」按钮，可边看边做。</p>
 <div class="rtgrid">
 <div class="rtcard">
-  <div class="rthead"><span class="ricon">💻</span><b>颈椎·肩颈 3 分钟</b><span class="muted">·共3分10秒</span><img class="rtgif" loading="lazy" src="media/1403-x2chWLO.gif" alt="neck side stretch" data-rt="neck" title="点击开始跟练：颈侧拉伸…"></div>
-  <div class="muted">每 60-90 分钟一次。目标是打断头前伸与耸肩的持续负荷，不是把自己拉痛。全套都是坐姿/站姿，地板动作不放在这里。<br>📍 工位坐着就能做，不用换衣服</div>
+  <div class="rthead"><span class="ricon">💻</span><b>颈椎·肩颈 3 分钟</b><img class="rtgif" loading="lazy" src="media/1403-x2chWLO.gif" alt="neck side stretch" data-rt="neck" title="点击开始跟练：颈侧拉伸…"></div>
+  <div class="rtmeta">⏱ 共 3 分 10 秒 · 📍 工位坐着就能做，不用换衣服</div>
+  <div class="muted">每 60-90 分钟一次。目标是打断头前伸与耸肩的持续负荷，不是把自己拉痛。全套都是坐姿/站姿，地板动作不放在这里。</div>
   <ol class="rtlist"><li>坐直，脚踩地，肩放松 — 10秒<span class="muted"> · 坐骨坐稳、下巴微收，先深呼吸两次</span></li><li><b>颈侧拉伸（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 耳朵找肩膀；出现手麻/头晕立刻停</span></li><li><b>颈侧轻加压（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 手只做轻微加压，痛感≤4/10</span></li><li><b>坐姿单臂上举侧伸展（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 手臂贴近耳朵，别耸肩、别前倾</span></li><li><b>胸前/前肩拉伸</b> — 30秒<span class="muted"> · 双臂交叉前推，肩胛轻轻向后收</span></li><li><b>前臂腕部拉伸（左右各做）</b> — 25秒（左右各一次）<span class="muted"> · 手臂伸直，手掌轻拉，不痛为界</span></li><li><b>Y 字上举（中下斜方）</b> — 35秒（约 10 次）<span class="muted"> · 没弹力带就空手；拇指朝上，别耸肩</span></li></ol>
   <button class="startbtn" data-rt="neck">▶ 开始跟练</button>
 </div>
 <div class="rtcard">
-  <div class="rthead"><span class="ricon">🪑</span><b>腰背舒缓 5 分钟</b><span class="muted">·共3分40秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="back" title="点击开始跟练：仰卧屈膝转体…"></div>
-  <div class="muted">针对“酸、紧、但不剧烈”的腰部不适：先减张（拉伸），再做抗伸展与臀肌激活。<br>📍 地板/瑜伽垫，穿宽松衣服</div>
+  <div class="rthead"><span class="ricon">🪑</span><b>腰背舒缓 5 分钟</b><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="back" title="点击开始跟练：仰卧屈膝转体…"></div>
+  <div class="rtmeta">⏱ 共 3 分 40 秒 · 📍 地板/瑜伽垫，穿宽松衣服</div>
+  <div class="muted">针对“酸、紧、但不剧烈”的腰部不适：先减张（拉伸），再做抗伸展与臀肌激活。</div>
   <ol class="rtlist"><li>仰卧，双膝屈曲，脚踩地 — 10秒<span class="muted"> · 腰下轻贴地，做两次慢呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 45秒（左右各一次）<span class="muted"> · 膝只转到不痛的那一半，慢慢落</span></li><li><b>仰卧腿后侧拉伸</b> — 35秒（左右各一次）<span class="muted"> · 臀不离地，拉到“紧而不痛”</span></li><li><b>臀桥</b> — 40秒（约 12 次）<span class="muted"> · 先在臀部收紧，再抬骨盆；腰不顶</span></li><li><b>死虫</b> — 40秒（约 6 次）<span class="muted"> · 腰贴地，腿伸到腰要离地就回</span></li><li><b>坐姿臀部拉伸（收尾，需坐地）</b> — 50秒（左右各一次）<span class="muted"> · 坐直，胸骨向前；不能坐地就用 C11 代替</span></li></ol>
   <button class="startbtn" data-rt="back">▶ 开始跟练</button>
 </div>
 <div class="rtcard">
-  <div class="rthead"><span class="ricon">🗄️</span><b>工位久坐 4 分钟（桌边可做）</b><span class="muted">·共3分20秒</span><img class="rtgif" loading="lazy" src="media/0690-QFmz6ch.gif" alt="seated lower back stretch" data-rt="desk" title="点击开始跟练：坐姿单臂上举侧伸展…"></div>
-  <div class="muted">下午最僵的那一阵用。腰的部分用「髋铰链 + 臀肌激活」而不是弯腰拉伸，肩的部分补一点中背力量。<br>📍 椅子 + 一张桌子/门框，站立动作不需地板</div>
+  <div class="rthead"><span class="ricon">🗄️</span><b>工位久坐 4 分钟（桌边可做）</b><img class="rtgif" loading="lazy" src="media/0690-QFmz6ch.gif" alt="seated lower back stretch" data-rt="desk" title="点击开始跟练：坐姿单臂上举侧伸展…"></div>
+  <div class="rtmeta">⏱ 共 3 分 20 秒 · 📍 椅子 + 一张桌子/门框，站立动作不需地板</div>
+  <div class="muted">下午最僵的那一阵用。腰的部分用「髋铰链 + 臀肌激活」而不是弯腰拉伸，肩的部分补一点中背力量。</div>
   <ol class="rtlist"><li>站起来，双脚与髋同宽 — 10秒<span class="muted"> · 膝微屈，肋骨收一点，别塌腰</span></li><li><b>坐姿/站姿单臂上举侧伸展（左右各做）</b> — 30秒（左右各一次）<span class="muted"> · 手臂贴耳朵向上，身体只向侧面倒</span></li><li><b>扶桌屈髋下压（背阔/胸椎）</b> — 30秒<span class="muted"> · 髋向后坐，背拉长；不追求压得很低</span></li><li><b>扶桌单腿髋伸展（收臀）</b> — 40秒（约 12 次）<span class="muted"> · 扶稳桌沿，腿向后、臀夹紧；腰不塌，不用腰顶</span></li><li><b>反向飞鸟（中背激活）</b> — 35秒（约 12 次）<span class="muted"> · 空手也行：肩胛向后夹，别耸肩</span></li><li><b>前臂腕部拉伸（左右各做）</b> — 25秒（左右各一次）<span class="muted"> · 键盘手必做，手臂伸直再拉</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 最后收尾，慢慢呼吸</span></li></ol>
   <button class="startbtn" data-rt="desk">▶ 开始跟练</button>
 </div>
 <div class="rtcard">
-  <div class="rthead"><span class="ricon">🧘</span><b>全身唤醒 8 分钟</b><span class="muted">·共5分10秒</span><img class="rtgif" loading="lazy" src="media/1604-DFGXwZr.gif" alt="world greatest stretch" data-rt="full" title="点击开始跟练：世界最伟大拉伸…"></div>
-  <div class="muted">久坐一整天后最缺的是“拉紧的松开 + 松掉的收紧”。按顺序做完，腰和肩颈一起处理。<br>📍 办公室/家里都行，需要 1㎡ 空间</div>
+  <div class="rthead"><span class="ricon">🧘</span><b>全身唤醒 8 分钟</b><img class="rtgif" loading="lazy" src="media/1604-DFGXwZr.gif" alt="world greatest stretch" data-rt="full" title="点击开始跟练：世界最伟大拉伸…"></div>
+  <div class="rtmeta">⏱ 共 5 分 10 秒 · 📍 办公室/家里都行，需要 1㎡ 空间</div>
+  <div class="muted">久坐一整天后最缺的是“拉紧的松开 + 松掉的收紧”。按顺序做完，腰和肩颈一起处理。</div>
   <ol class="rtlist"><li>站立，双手上举伸展一次 — 10秒<span class="muted"> · 站直，深呼吸，感受起身</span></li><li><b>世界最伟大拉伸（左右各做）</b> — 40秒（左右各一次）<span class="muted"> · 后腿塌就写不下去时，手撑椅子</span></li><li><b>扶物屈髋下压背阔</b> — 40秒<span class="muted"> · 髋向后，胸向下，别弓腰硬压</span></li><li><b>臀桥行进</b> — 40秒（约 6 次）<span class="muted"> · 骨盆保持水平，慢慢交替抬脚</span></li><li><b>弹力带划船（左右/双侧）</b> — 40秒（每侧约 12 次）<span class="muted"> · 无带：改用墙角划船或 S03</span></li><li><b>肩胛俯卧撑</b> — 40秒（约 12 次）<span class="muted"> · 只动肩胛，手肘不弯</span></li><li><b>膝跪股四头肌拉伸</b> — 40秒（左右各一次）<span class="muted"> · 尾骨微收，腰不塌</span></li><li><b>胸小肌/前肩拉伸</b> — 30秒（左右各一次）<span class="muted"> · 胸前打开，肩不下压</span></li><li><b>颈侧拉伸</b> — 30秒（左右各一次）<span class="muted"> · 轻轻的，不猛拉</span></li></ol>
   <button class="startbtn" data-rt="full">▶ 开始跟练</button>
 </div>
 <div class="rtcard">
-  <div class="rthead"><span class="ricon">🌙</span><b>睡前放松 6 分钟</b><span class="muted">·共3分40秒</span><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="night" title="点击开始跟练：仰卧屈膝转体…"></div>
-  <div class="muted">躺着的姿势对腰椎压力最小，适合在酸痛的一天结束时做，帮助放松入睡。<br>📍 床上/地板上，全程躺着</div>
+  <div class="rthead"><span class="ricon">🌙</span><b>睡前放松 6 分钟</b><img class="rtgif" loading="lazy" src="media/3639-6sYyrRX.gif" alt="bent knee lying twist (male)" data-rt="night" title="点击开始跟练：仰卧屈膝转体…"></div>
+  <div class="rtmeta">⏱ 共 3 分 40 秒 · 📍 床上/地板上，全程躺着</div>
+  <div class="muted">躺着的姿势对腰椎压力最小，适合在酸痛的一天结束时做，帮助放松入睡。</div>
   <ol class="rtlist"><li>躺下，膝盖垫个枕头 — 15秒<span class="muted"> · 做 3 次“吸 4 秒 呼 6 秒”的呼吸</span></li><li><b>仰卧屈膝转体（左右各做）</b> — 60秒（左右各一次）<span class="muted"> · 呼气时膝盖落，吸气回正</span></li><li><b>仰卧腿后侧拉伸</b> — 40秒（左右各一次）<span class="muted"> · 用毛巾勾脚，腿抬到有拉伸感</span></li><li><b>臀桥（晚上做轻的）</b> — 35秒（约 10 次）<span class="muted"> · 不急，慢慢起慢慢落</span></li><li><b>抱膝到下背（躺姿收尾）</b> — 40秒（约 10 次）<span class="muted"> · 抱膝贴近胸口，腰贴床面，慢慢滚两下</span></li><li><b>颈侧拉伸（躺姿可做）</b> — 30秒（左右各一次）<span class="muted"> · 侧躺或坐姿都行，轻轻的不猛拉</span></li></ol>
   <button class="startbtn" data-rt="night">▶ 开始跟练</button>
 </div></div>
